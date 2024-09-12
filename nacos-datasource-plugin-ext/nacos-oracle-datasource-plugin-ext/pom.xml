@@ -14,13 +14,13 @@
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
-    <jdbc.oracle.version>23.2.0.0</jdbc.oracle.version>
+    <jdbc.oracle.version>11.2.0.3</jdbc.oracle.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>com.oracle.database.jdbc</groupId>
-      <artifactId>ojdbc8</artifactId>
+      <groupId>com.oracle</groupId>
+      <artifactId>ojdbc6</artifactId>
       <version>${jdbc.oracle.version}</version>
     </dependency>
     <dependency>

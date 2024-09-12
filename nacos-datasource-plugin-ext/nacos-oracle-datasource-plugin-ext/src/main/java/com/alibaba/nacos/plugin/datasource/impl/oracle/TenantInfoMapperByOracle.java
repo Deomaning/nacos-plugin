@@ -15,6 +15,8 @@
  */
 package com.alibaba.nacos.plugin.datasource.impl.oracle;
 
+import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
+import com.alibaba.nacos.plugin.datasource.enums.TrustedOracleSqlFunctionEnum;
 import com.alibaba.nacos.plugin.datasource.mapper.TenantInfoMapper;
 
 /***
@@ -22,4 +24,8 @@ import com.alibaba.nacos.plugin.datasource.mapper.TenantInfoMapper;
  */
 public class TenantInfoMapperByOracle extends AbstractOracleMapper implements TenantInfoMapper {
 
+    @Override
+    public String getFunction(String s) {
+        return TrustedOracleSqlFunctionEnum.getFunctionByName(s);
+    }
 }

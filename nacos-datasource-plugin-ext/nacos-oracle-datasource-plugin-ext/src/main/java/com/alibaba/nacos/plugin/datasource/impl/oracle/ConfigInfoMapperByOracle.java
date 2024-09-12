@@ -23,7 +23,9 @@ import java.util.List;
 import com.alibaba.nacos.common.utils.CollectionUtils;
 import com.alibaba.nacos.common.utils.NamespaceUtil;
 import com.alibaba.nacos.common.utils.StringUtils;
+import com.alibaba.nacos.plugin.datasource.constants.DatabaseTypeConstant;
 import com.alibaba.nacos.plugin.datasource.constants.FieldConstant;
+import com.alibaba.nacos.plugin.datasource.enums.TrustedOracleSqlFunctionEnum;
 import com.alibaba.nacos.plugin.datasource.mapper.ConfigInfoMapper;
 import com.alibaba.nacos.plugin.datasource.model.MapperContext;
 import com.alibaba.nacos.plugin.datasource.model.MapperResult;
@@ -568,6 +570,17 @@ public class ConfigInfoMapperByOracle extends AbstractOracleMapper
 		String sql = " SELECT t.id,data_id,group_id,tenant_id,app_name,content,md5 "
 				+ " FROM ( " + innerSql + " )" + " g, config_info t  WHERE g.id = t.id ";
 		return new MapperResult(sql, sqlArgs);
+	}
+
+	@Override
+	public String getFunction(String functionName)
+	{
+		return TrustedOracleSqlFunctionEnum.getFunctionByName(functionName);
+	}
+
+	@Override
+	public String getDataSource() {
+		return DatabaseTypeConstant.ORACLE;
 	}
 
 }
